@@ -40,13 +40,13 @@ class ProfilesSpider(scrapy.Spider):
         username = self.driver.find_element_by_name("session_key")
         # TODO
         # username.send_keys('your_account_email')
-        username.send_keys('ingrid.guo@4pl.plus')
+        username.send_keys('xxxxxxx')
         sleep(0.5)
 
         password = self.driver.find_element_by_name('session_password')
         # TODO
         # password.send_keys('your_account_password')
-        password.send_keys('Ingrid2020')
+        password.send_keys('xxxxxx')
         sleep(0.5)
 
         sign_in_button = self.driver.find_element_by_tag_name('button')
