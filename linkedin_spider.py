@@ -1,17 +1,3 @@
-"""
-# TODO
-1. pip install scrapy selenium
-2. download chromedriver
-3. save chromedriver to a system environment path
-4. change your browser's user_agent (whoer.net)
-5. change search query content
-6. change next_page
-7. enter your email & password
-8. change xpath selector (name, location...)
-9. cd to the directory contains scrapy.cfg
-10. run in terminal: scrapy crawl profiles -o output_file_name.json
-"""
-
 import scrapy
 from scrapy.selector import Selector
 from selenium import webdriver
@@ -29,7 +15,7 @@ class ProfilesSpider(scrapy.Spider):
         chrom_path = which("chromedriver")
         chrom_options = Options()
         chrom_options.headless = True
-        # TODO
+        
         self.user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36'
         chrom_options.add_argument(f'user-agent={self.user_agent}')
         self.driver = webdriver.Chrome(executable_path=chrom_path, options=chrom_options)
@@ -39,13 +25,11 @@ class ProfilesSpider(scrapy.Spider):
         self.driver.get('https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin')
         username = self.driver.find_element_by_name("session_key")
         # TODO
-        # username.send_keys('your_account_email')
         username.send_keys('xxxxxxx')
         sleep(0.5)
 
         password = self.driver.find_element_by_name('session_password')
         # TODO
-        # password.send_keys('your_account_password')
         password.send_keys('xxxxxx')
         sleep(0.5)
 
@@ -56,7 +40,6 @@ class ProfilesSpider(scrapy.Spider):
         self.login()
         sleep(5)
         # TODO
-        # query = 'site:linkedin.com/in AND "Rails" AND "Linux" AND "AWS" AND "Los Angeles" AND "cake"'
         query = 'site:linkedin.com/in AND "Ecommerce" AND "Los Angeles"'
         self.driver.get('https://www.google.com/')
         search_query = self.driver.find_element_by_name('q')
@@ -80,9 +63,6 @@ class ProfilesSpider(scrapy.Spider):
             sleep(5)
             sel = Selector(text=self.driver.page_source)
             # TODO
-            # name = sel.xpath('//*[@class = "inline t-24 t-black t-normal break-words"]/text()').extract_first()
-            # position = sel.xpath('//*[@class = "mt1 t-18 t-black t-normal break-words"]/text()').extract_first()
-            # location = sel.xpath('//*[@class = "t-16 t-black t-normal inline-block"]/text()').extract_first()
             name = sel.xpath('//*[@class = "inline t-24 t-black t-normal break-words"]/text()').extract_first()
             position = sel.xpath('//*[@class = "mt1 t-14 t-black t-normal break-words"]/text()').extract_first()
             location = sel.xpath('//*[@class = "t-12 t-black t-normal inline-block"]/text()').extract_first()
