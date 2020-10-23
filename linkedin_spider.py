@@ -1,17 +1,3 @@
-"""
-# TODO
-1. pip install scrapy selenium
-2. download chromedriver
-3. save chromedriver to a system environment path
-4. change your browser's user_agent (whoer.net)
-5. change search query content
-6. change next_page
-7. enter your email & password
-8. change xpath selector (name, location...)
-9. cd to the directory contains scrapy.cfg
-10. run in terminal: scrapy crawl profiles -o output_file_name1.json
-* cd /Users/ig/Desktop/linkedin_scrapy/
-"""
 
 import scrapy
 from scrapy.selector import Selector
@@ -40,13 +26,11 @@ class ProfilesSpider(scrapy.Spider):
         self.driver.get('https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin')
         username = self.driver.find_element_by_name("session_key")
         # TODO
-        # username.send_keys('your_account_email')
         username.send_keys('ingrid.guo@4pl.plus')
         sleep(0.5)
 
         password = self.driver.find_element_by_name('session_password')
         # TODO
-        # password.send_keys('your_account_password')
         password.send_keys('Double2020')
         sleep(0.5)
 
@@ -57,7 +41,6 @@ class ProfilesSpider(scrapy.Spider):
         self.login()
         sleep(5)
         # TODO
-        # query = 'site:linkedin.com/in AND "Rails" AND "Linux" AND "AWS" AND "Los Angeles" AND "cake"'
         query = 'site:linkedin.com/in AND "Ecommerce" AND "Los Angeles"'
         self.driver.get('https://www.google.com/')
         search_query = self.driver.find_element_by_name('q')
