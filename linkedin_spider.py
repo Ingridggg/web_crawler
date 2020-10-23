@@ -26,12 +26,12 @@ class ProfilesSpider(scrapy.Spider):
         self.driver.get('https://www.linkedin.com/login?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin')
         username = self.driver.find_element_by_name("session_key")
         # TODO
-        username.send_keys('ingrid.guo@4pl.plus')
+        username.send_keys('xxxxxxx')
         sleep(0.5)
 
         password = self.driver.find_element_by_name('session_password')
         # TODO
-        password.send_keys('Double2020')
+        password.send_keys('xxxxxxx')
         sleep(0.5)
 
         sign_in_button = self.driver.find_element_by_tag_name('button')
