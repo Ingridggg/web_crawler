@@ -1,3 +1,8 @@
+"""
+* cd /Users/ig/Desktop/linkedin_scrapy/
+
+scrapy crawl profiles -o output_file_name1.json
+"""
 
 import scrapy
 from scrapy.selector import Selector
